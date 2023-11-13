@@ -1,0 +1,35 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "D:\\dev\\base_project\\src\\logs\\error\\.467d4fb36c725c1c39dee6b44587974b2825eb90-audit.json",
+    "files": [
+        {
+            "date": 1699081990326,
+            "name": "D:\\dev\\base_project\\src\\logs\\error\\2023-11-04.log",
+            "hash": "7ff2a80c70ebea4fa9709a072338ae43a22ba1d1c4a2c8411fb8720ab3a73eab"
+        },
+        {
+            "date": 1699282425629,
+            "name": "D:\\dev\\base_project\\src\\logs\\error\\2023-11-06.log",
+            "hash": "714453ef00874da7382a8afaefc8542e36f717b772a81541636c044e9bb4880f"
+        },
+        {
+            "date": 1699400381225,
+            "name": "D:\\dev\\base_project\\src\\logs\\error\\2023-11-08.log",
+            "hash": "90f7815c0a780ef241f36e1b7a5460e9f7b62b3531e466aa24804fbfeb98f3db"
+        },
+        {
+            "date": 1699462926346,
+            "name": "D:\\dev\\base_project\\src\\logs\\error\\2023-11-09.log",
+            "hash": "b976080a941aa5b5bdc36be2107b21f47c1e5397211649f1f1dc2fa49bab64af"
+        },
+        {
+            "date": 1699803071513,
+            "name": "D:\\dev\\base_project\\src\\logs\\error\\2023-11-12.log",
+            "hash": "d111e3a0755474d149c10629844fb2d7c2315086acd1a194494a8f1184324a86"
+        }
+    ],
+    "hashType": "sha256"
+}
