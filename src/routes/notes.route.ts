@@ -15,7 +15,7 @@ export class NotesRoute implements Routes {
   }
 
   private initializeRoutes() {
-    this.router.get(`${this.path}`, AuthMiddleware, this.notes.getNotesByUserId);
+    this.router.get(`${this.path}/:userId`, AuthMiddleware, this.notes.getNotesByUserId);
     this.router.post(`${this.path}`, AuthMiddleware, ValidationMiddleware(CreateNoteDto), this.notes.createNoteByUserId);
     this.router.put(`${this.path}/:noteId(\\d+)`, AuthMiddleware, ValidationMiddleware(UpdateNoteDto), this.notes.updateNoteByUserId);
     this.router.delete(`${this.path}/:noteId(\\d+)`, AuthMiddleware, this.notes.deleteNoteByUserId);

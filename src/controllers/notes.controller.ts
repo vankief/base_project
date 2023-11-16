@@ -5,6 +5,7 @@ import { NoteService } from '@services/notes.service';
 import { User } from '@interfaces/users.interface';
 import { RequestWithUser } from '@/interfaces/auth.interface';
 import { clearScreenDown } from 'readline';
+import { OK } from 'valid_respones/success.response';
 
 export class NoteController {
   public note = Container.get(NoteService);
@@ -12,8 +13,17 @@ export class NoteController {
   public getNotesByUserId = async (req: RequestWithUser, res: Response, next: NextFunction): Promise<void> => {
     try {
       const userId = req.user.id;
-      const findAllNotesData: Note[] = await this.note.findAllNotes(userId);
-      res.status(200).json({ data: findAllNotesData, message: 'findAll' });
+      const from = Number(req.query.from) || 0;
+      const size = Number(req.query.size) || 10;
+      const result = await this.note.findAllNotes(userId, from, size);
+      new OK({
+        data: {
+          notes: result.data,
+          count: result.count,
+          notefilter: result.data.length,
+        },
+        message: 'Success',
+      }).send(res);
     } catch (error) {
       console.log(error);
       next(error);

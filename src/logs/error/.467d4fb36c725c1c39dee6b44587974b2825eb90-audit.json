@@ -29,6 +29,16 @@
             "date": 1699803071513,
             "name": "D:\\dev\\base_project\\src\\logs\\error\\2023-11-12.log",
             "hash": "d111e3a0755474d149c10629844fb2d7c2315086acd1a194494a8f1184324a86"
+        },
+        {
+            "date": 1700147574375,
+            "name": "D:\\dev\\base_project\\src\\logs\\error\\2023-11-16.log",
+            "hash": "b30a7c8308a08fdc3c5354dffca34b4b8e323cb7510c25e99cc07ff7a54829f3"
+        },
+        {
+            "date": 1700154330967,
+            "name": "D:\\dev\\base_project\\src\\logs\\error\\2023-11-17.log",
+            "hash": "2e031df3891c431610f222e9f679bd0ab2c0d6f4bc5e78b179f60a9c82cd4196"
         }
     ],
     "hashType": "sha256"

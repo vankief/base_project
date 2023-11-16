@@ -1,4 +1,4 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityRepository, Repository, getRepository } from 'typeorm';
 import { Service } from 'typedi';
 import { NoteEntity } from '@entities/notes.entity';
 import { Note } from '@interfaces/notes.interface';
@@ -9,16 +9,37 @@ import { DeleteResult } from 'typeorm';
 @Service()
 @EntityRepository()
 export class NoteService extends Repository<NoteEntity> {
-  public async findAllNotes(userId: number): Promise<Note[]> {
+  public async findAllNotes(
+    userId: number,
+    from: number,
+    size: number,
+  ): Promise<{
+    data: NoteEntity[];
+    count: number;
+  }> {
     try {
       const findUser = await UserEntity.findOne({ where: { id: userId } });
-      const notes: Note[] = await NoteEntity.find({ where: { user: findUser } });
-      return notes;
+      // const query = await getRepository(NoteEntity)
+      //   .createQueryBuilder('note_entity')
+      //   .where({ user: findUser })
+      //   .orderBy('note_entity.ceatedAt', 'DESC')
+      //   .skip(startIndex)
+      //   .take(limit);
+      // console.log(query.getSql());
+      // const notes: Note[] = await query.getMany();
+      // return notes;
+      const [result, total] = await NoteEntity.findAndCount({
+        where: { user: findUser },
+        order: { ceatedAt: 'DESC' },
+        skip: from,
+        take: size,
+      });
+      return { data: result, count: total };
     } catch (error) {
+      console.log(error);
       throw new HttpException(500, error.message);
     }
   }
-
   public async findNoteById(userId: number, noteId: number): Promise<Note> {
     const findNote: Note = await NoteEntity.findOne({ where: { id: noteId, userId } });
     if (!findNote) throw new HttpException(409, "Note doesn't exist");
